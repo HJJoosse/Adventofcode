@@ -1,0 +1,5 @@
+AOC2020py.egg-info/PKG-INFO
+AOC2020py.egg-info/SOURCES.txt
+AOC2020py.egg-info/dependency_links.txt
+AOC2020py.egg-info/requires.txt
+AOC2020py.egg-info/top_level.txt
