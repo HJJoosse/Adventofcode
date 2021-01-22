@@ -1,3 +1,5 @@
+module Y2019.Day2 where
+
 import System.IO
 
 fuelAdder :: Integer -> Integer
