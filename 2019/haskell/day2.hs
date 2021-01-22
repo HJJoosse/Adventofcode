@@ -24,7 +24,17 @@ part1Solver ix inList
         posC = returnInt (ix+3) inList
         op = addOrmult ixVal
         inVal = op valA valB
- 
+
+part2Solver :: Int -> Int -> M.Map Int Int -> Int
+part2Solver ixA ixB inList = do
+    if (snd . head . M.toList . part1Solver 0 . changeVals ixA ixB $ inList) == valTosearch
+        then 100*ixA + ixB
+        else if ixB == 99
+            then part2Solver (ixA+1) (ixB-99) inList
+            else part2Solver ixA (ixB+1) inList
+
+            
+
 changeVals :: Int -> Int -> M.Map Int Int -> M.Map Int Int
 changeVals int1 int2 inList = M.insert 2 int2 $ M.insert 1 int1 inList
 
@@ -39,4 +49,4 @@ day2solver fileName = do
     let inputs = Prelude.map (read . T.unpack) inputValues :: [Int]
     let initList = M.insert 2 2 $ M.insert 1 12 $ M.fromList $ zip [0..] inputs    
     print $ snd . head . M.toList . part1Solver 0 $ initList
-    print [100*x + y|x <- [0..99],y <- [0..99] , (snd . head . M.toList . part1Solver 0 . changeVals x y . M.fromList . zip [0..] $ inputs) == valTosearch]
+    print $ part2Solver 0 0 (M.fromList $ zip [0..] inputs)
