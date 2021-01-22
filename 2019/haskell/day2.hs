@@ -49,4 +49,4 @@ day2solver fileName = do
     let inputs = Prelude.map (read . T.unpack) inputValues :: [Int]
     let initList = M.insert 2 2 $ M.insert 1 12 $ M.fromList $ zip [0..] inputs    
     print $ snd . head . M.toList . part1Solver 0 $ initList
-    print $ part2Solver 0 0 (M.fromList $ zip [0..] inputs)
+    print $ part2Solver 0 0 . M.fromList . zip [0..] $ inputs
