@@ -1,7 +1,7 @@
 module Y2019.Day2 where
 
 import qualified Data.Text as T
-import qualified Data.Map.Strict as M
+import qualified Data.Map as M
 
 addOrmult :: Int -> Int  -> Int  -> Int 
 addOrmult 1 = (+)
