@@ -19,10 +19,8 @@ part1Solver ix inList
     | otherwise             = inList
     where 
         ixVal = returnInt ix inList
-        posA = returnInt (ix+1) inList
-        valA = returnInt posA inList
-        posB = returnInt (ix+2) inList
-        valB = returnInt posB inList
+        valA = returnInt (returnInt (ix+1) inList) inList
+        valB = returnInt (returnInt (ix+2) inList) inList
         posC = returnInt (ix+3) inList
         op = addOrmult ixVal
         inVal = op valA valB
