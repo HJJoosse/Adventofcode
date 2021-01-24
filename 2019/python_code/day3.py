@@ -51,5 +51,5 @@ if __name__ == "__main__":
     wire_one = [(x[0],int(x[1:])) for x in wire_one.split(",")]
     wire_two = [(x[0],int(x[1:])) for x in wire_two.split(",")]
     intersects = (track_route(wire_one,wire_two,[(0,0)],[(0,0)]))
-    print(min([x[0] for x in intersects]))
-    print(min([x[1] for x in intersects]))
+    print("Answer part 1:",min([x[0] for x in intersects]))
+    print("Answer part 2:",min([x[1] for x in intersects]))
