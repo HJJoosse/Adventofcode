@@ -1,24 +1,33 @@
-import qualified Data.Text as T
-import qualified Data.Text.IO as TIO
+import qualified Data.Text      as T
+import qualified Data.Text.IO   as TIO
 
-import Data.Maybe  (isNothing)
+import Data.Maybe               (isNothing)
 
 upDatecoord :: T.Text -> [Int]
 upDatecoord dir
-    | (fst dirSplit) == (T.pack "L")     = [-dist,0]
-    | (fst dirSplit) == (T.pack "R")     = [dist,0]
-    | (fst dirSplit) == (T.pack "U")     = [0,dist]
-    | otherwise                          = [0,-dist]
+    | fst dirSplit == T.pack "L"    = [-dist,0]
+    | fst dirSplit == T.pack "R"    = [dist,0]
+    | fst dirSplit == T.pack "U"    = [0,dist]
+    | otherwise                     = [0,-dist]
     where 
         dirSplit = T.splitAt 1 dir
         dist = read . T.unpack $ snd dirSplit 
 
 getMovements :: [T.Text] -> [[Int]]
 getMovements inList = do
-    coordsMap <- map upDatecoord inList
-    return coordsMap
+    map upDatecoord inList
 
-getCoords :: [[Int]] -> [Int]
+trackCoords :: [[Int]] -> [[Int]] -> [[Int]]
+trackCoords movList startPoint = do
+    let moves = head movList
+    let movListnew = tail movList
+    let newPos = zipWith (+) (last startPoint) moves
+    let startPoint = startPoint++[newPos]
+    if null [movListnew]
+        then
+            startPoint
+        else
+            trackCoords movListnew startPoint
 
 day3solver :: FilePath -> IO ()
 day3solver fileName = do
@@ -27,8 +36,4 @@ day3solver fileName = do
     let inputDirs = map (T.splitOn (T.pack ",")) inputList
     let movsA = getMovements . head $ inputDirs
     let movsB = getMovements . last $ inputDirs
-
-
-
-
-
+    print (trackCoords movsA [[0,0]])
