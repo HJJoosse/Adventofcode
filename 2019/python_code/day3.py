@@ -18,25 +18,25 @@ def x_or_y(direction:str,distance:int,last_pos:list):
     
     return [(x,y) for x,y in zip(x_coords,y_coords)]
 
-def create_route(wire: list, route:dict, counter:Counter, steps: int):
+def create_route(wire: list, route:dict, counter:Counter, index: int):
     direction = wire[0][0]
     distance = wire[0][1]
     wire = wire[1:]
-    last_pos = route[steps][-1]
+    last_pos = route[index][-1]
     
-    steps += 1
-    route.update({steps:x_or_y(direction,distance,last_pos)})
-    counter.update(route[steps])
+    index += 1
+    route.update({index:x_or_y(direction,distance,last_pos)})
+    counter.update(route[index])
     
-    return route, wire,steps 
+    return route, wire,index 
 
 def get_euclidean(intup : tuple):
     return sum([abs(x) for x in intup])
 
-def track_route(wire_one: list, wire_two: list,route_one: dict, route_two: list,steps_a:int = 0,steps_b:int = 0):
+def track_route(wire_one: list, wire_two: list,route_one: dict, route_two: list,index_a:int = 0,steps_b:int = 0):
     ct = Counter()
     while (len(wire_one) > 0):
-        route_one, wire_one, steps_a = create_route(wire_one, route_one, ct,steps_a)
+        route_one, wire_one, index_a = create_route(wire_one, route_one, ct,index_a)
     overlap = []
 
     for x in wire_two:
