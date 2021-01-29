@@ -1,5 +1,5 @@
 import operator
-from collections import ChainMap, Counter
+from collections import Counter
 
 def x_or_y(direction:str,distance:int,last_pos:list):
     if direction in ["L","R"]:
