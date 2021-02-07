@@ -1,5 +1,6 @@
 import qualified Data.Text      as T
 import qualified Data.Text.IO   as TIO
+import qualified Data.Set       as S
 
 import Data.Maybe               (isNothing)
 
@@ -21,8 +22,8 @@ trackCoords :: [[Int]] -> [[Int]] -> [[Int]]
 trackCoords movList startPoint = do
     let moves = head movList
     let movListnew = tail movList
-    let newPos = zipWith (+) (last startPoint) moves
-    let startPoint = startPoint++[newPos]
+    let moveRange = zipWith (+) (last startPoint) moves
+    let startPoint = startPoint++[moveRange]
     if null [movListnew]
         then
             startPoint
@@ -36,4 +37,4 @@ day3solver fileName = do
     let inputDirs = map (T.splitOn (T.pack ",")) inputList
     let movsA = getMovements . head $ inputDirs
     let movsB = getMovements . last $ inputDirs
-    print (trackCoords movsA [[0,0]])
+    print movsA

@@ -51,8 +51,8 @@ def track_route(wire_one: list, wire_two: list,route_one: dict, route_two: list,
 if __name__ == "__main__":
     with open("../inputs/input_d3","r") as f:
        wire_one, wire_two = f.read().split("\n")[0:2]
-    wire_one = "R75,D30,R83,U83,L12,D49,R71,U7,L72"
-    wire_two = "U62,R66,U55,R34,D71,R55,D58,R83"
+    #wire_one = "R75,D30,R83,U83,L12,D49,R71,U7,L72"
+    #wire_two = "U62,R66,U55,R34,D71,R55,D58,R83"
     wire_one = [(x[0],int(x[1:])) for x in wire_one.split(",")]
     wire_two = [(x[0],int(x[1:])) for x in wire_two.split(",")]
     intersects = (track_route(wire_one,wire_two,{0:[(0,0)]},[(0,0)]))
