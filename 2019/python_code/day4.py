@@ -13,12 +13,9 @@ def is_double(digit:str):
     return False
 
 def is_double_correctly(digit:str):
-    if is_double(digit):
-        ct = Counter(digit)
-        if 2 in ct.values():
-            return True
-        else:
-            return False
+    ct = Counter(digit)
+    if 2 in ct.values():
+        return True
     else:
         return False
     
