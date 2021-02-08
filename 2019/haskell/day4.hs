@@ -19,15 +19,15 @@ hasDouble input ix
 
 mapInput :: String  -> [(Char,Int)]
 mapInput input = zip uniqueVals $ map (\x -> length (filter (==x) input)) uniqueVals
-    where uniqueVals = [x| x<-['1'..'9'], x `elem` input]
+    where uniqueVals = [x | x<-['1'..'9'], x `elem` input]
 
 hasValiddouble :: String -> Bool
 hasValiddouble input
-    | not $ null [True|x<- mapInput input, snd x == 2]  = True 
+    | not $ null [True | x<- mapInput input, snd x == 2]  = True 
     | otherwise                                         = False
 
 main :: IO ()
 main = do
     let incrementingPasses = [x|x <- [startPoint..endPoint], isIncrementing $ show x]
-    print $ length [x|x<- incrementingPasses, hasDouble (show x) 0]
-    print $ length [x|x<- incrementingPasses, hasValiddouble (show x)]
+    print $ length [x | x<- incrementingPasses, hasDouble (show x) 0]
+    print $ length [x | x<- incrementingPasses, hasValiddouble (show x)]
