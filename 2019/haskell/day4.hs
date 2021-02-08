@@ -26,8 +26,8 @@ hasValiddouble input
     | not $ null [True|x<- mapInput input, snd x == 2]  = True 
     | otherwise                                         = False
 
-solveDay4 :: Integer -> Integer -> IO ()
-solveDay4 start end = do
-    let incrementingPasses = [x|x <- [start..end], isIncrementing $ show x]
+main :: IO ()
+main = do
+    let incrementingPasses = [x|x <- [startPoint..endPoint], isIncrementing $ show x]
     print $ length [x|x<- incrementingPasses, hasDouble (show x) 0]
     print $ length [x|x<- incrementingPasses, hasValiddouble (show x)]
