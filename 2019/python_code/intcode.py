@@ -17,10 +17,8 @@ class IntCode:
         
         
     def __call__(self,phase,amplifier=None):
-        diag_codes = [phase,amplifier]
-        diag_code_indexer = 0
-    
-        while not self.inputs[self.indexer].endswith("9"):
+        
+        while not self.inputs[self.indexer].endswith("99"):
             self.inputs[self.indexer] = ("0000"+self.inputs[self.indexer])[-5:]
             DE = self.inputs[self.indexer][-2:]
             C = self.inputs[self.indexer][2]
@@ -30,8 +28,11 @@ class IntCode:
                 self.inputs[pos_or_im(self.inputs,self.indexer+3,A)] = self.instructs[DE](self.inputs,self.indexer,C,B)
                 self.indexer+=4
             elif DE == "03":
-                self.inputs[pos_or_im(self.inputs,self.indexer+1,C)] = str(diag_codes[diag_code_indexer])
-                diag_code_indexer+=1
+                if amplifier is not None:
+                    self.inputs[pos_or_im(self.inputs,self.indexer+1,C)] = str(phase)
+                    phase = amplifier
+                else:
+                    self.inputs[pos_or_im(self.inputs,self.indexer+1,C)] = str(phase)
                 self.indexer+=2
             elif DE == "04":
                 self.outputcodes.append(self.inputs[pos_or_im(self.inputs,self.indexer+1,C)])
