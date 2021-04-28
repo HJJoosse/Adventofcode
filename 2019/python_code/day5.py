@@ -1,3 +1,5 @@
+from intcode import IntCode
+
 pos_or_im = lambda x,y,z:int(x[int(y)]) if z == "0" else int(y)
 
 def solve_part1(inputs: list,*args,**kwargs):
@@ -66,4 +68,4 @@ if __name__ == "__main__":
     with open("2019/inputs/input_d5") as f:
         content = f.read().split(",")
     print(solve_part1(content.copy(),1))
-    print(solve_part2(content,5,yolo = 2))
+    print(IntCode(content)(5)[-1])
