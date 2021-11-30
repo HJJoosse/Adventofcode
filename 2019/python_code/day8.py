@@ -1,4 +1,4 @@
-def split_index(content,batchsize):
+def split_index(content: list,batchsize: int):
     return content[:batchsize], content[batchsize:]
 
 with open('2019/inputs/input_d8','r') as f:
