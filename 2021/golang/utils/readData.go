@@ -26,7 +26,3 @@ func readArray(path string) []int {
 	}
 	return contArray
 }
-
-func main() {
-
-}
