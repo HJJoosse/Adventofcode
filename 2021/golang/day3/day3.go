@@ -17,12 +17,12 @@ func part1(path string) int {
 	gamma := ""
 	epsilon := ""
 	for i := 0; i < len(hexabins[0]); i++ {
-		if getmostCommon(hexabins, i) == "1" {
+		if getmostcommon(hexabins, i) == "1" {
 			epsilon += "0"
 		} else {
 			epsilon += "1"
 		}
-		gamma += getmostCommon(hexabins, i)
+		gamma += getmostcommon(hexabins, i)
 
 	}
 	gamma_int := bintoint(gamma)
@@ -44,7 +44,7 @@ func gettosingle(input []string, same bool) string {
 	i := 0
 	for len(input_cop) > 1 {
 		var temp_list []string
-		most_common := getmostCommon(input_cop, i)
+		most_common := getmostcommon(input_cop, i)
 		search := getsearch(most_common, same)
 		for _, s := range input_cop {
 			if string(s[i]) == search {
@@ -71,7 +71,7 @@ func getsearch(most_common string, same bool) string {
 	return search
 }
 
-func getmostCommon(array []string, index int) string {
+func getmostcommon(array []string, index int) string {
 	tot := 0
 	for _, s := range array {
 		if string(s[index]) == "1" {
