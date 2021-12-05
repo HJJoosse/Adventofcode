@@ -13,8 +13,8 @@ def SolverPart1(coords_list):
         elif start[0] == end[0]:
             min_y = min([end[1],start[1]])
             max_y = max([end[1],start[1]])
-            for i in range(len(field[min_y:max_y+1])):
-                field[min_y:max_y+1][i][start[0]] += 1
+            for y in range(min_y,max_y+1):
+                field[y][start[0]] += 1
     s = 0
     for i in range(y_len+1):
         s+= sum([x > 1 for x in field[i]])
@@ -36,8 +36,8 @@ def SolverPart2(coords_list):
         elif start[0] == end[0]:
             min_y = min([end[1],start[1]])
             max_y = max([end[1],start[1]])
-            for i in range(len(field[min_y:max_y+1])):
-                field[min_y:max_y+1][i][start[0]] += 1
+            for y in range(min_y,max_y+1):
+                field[y][start[0]] += 1
         else:
             
             direction_x = -1 if start[0] > end[0] else 1
