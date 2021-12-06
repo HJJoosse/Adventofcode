@@ -1,5 +1,5 @@
 
-def SolverPart1(coords_list):
+def solvepart1(coords_list):
     x_len = max([y[0] for x in coords_list for y in x])
     y_len = max([y[1] for x in coords_list for y in x])
     field = []
@@ -22,7 +22,7 @@ def SolverPart1(coords_list):
     return(s)
     
 
-def SolverPart2(coords_list):
+def solvepart2(coords_list):
     x_len = max([y[0] for x in coords_list for y in x])
     y_len = max([y[1] for x in coords_list for y in x])
     field = []
@@ -59,5 +59,5 @@ if __name__ == "__main__":
         for dir in content:
             
             coords.append([(int(y.split(",")[0]),int(y.split(",")[1])) for y in dir.split("->")])
-    print("part 1: "+str(SolverPart1(coords)))
-    print("part 2: "+str(SolverPart2(coords)))
+    print("part 1: "+str(solvepart1(coords)))
+    print("part 2: "+str(solvepart2(coords)))
