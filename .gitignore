@@ -6,3 +6,5 @@
 
 *.o
 **/day*/go.mod
+
+**/target/**
