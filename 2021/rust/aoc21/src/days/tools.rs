@@ -2,7 +2,9 @@ use std::fs;
 
 pub fn input_reader(data_file: &str) -> Vec<String> {
     let contents = fs::read_to_string(data_file).expect("no such file");
-    let contents_new: Vec<String> = contents.split("\n").map(|s| s.to_string()).collect();
+    let contents_new: Vec<String> = contents.split("\n")
+                                    .map(|s| s.to_string())
+                                    .collect();
     
     return contents_new
 }
