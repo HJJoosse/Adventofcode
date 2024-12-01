@@ -8,3 +8,6 @@
 **/day*/go.mod
 
 **/target/**
+
+aoc2024/config.py
+*.txt
