@@ -3,7 +3,8 @@ from operator import mul
 
 def read_input(path:str) -> str:
     with open(path,'r') as f:
-        data = f.read()
+        data = f.read().split("\n")
+    data = ''.join(data)
     return data
 
 def multiply_code(input_data):
